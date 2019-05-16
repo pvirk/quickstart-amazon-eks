@@ -40,3 +40,6 @@ spec:
     targetPort: 9090
   type: LoadBalancer
 EOF
+
+kubectl create -f solumina-searcher-deployment.yaml
+kubectl create -f solumina-searcher-service.yaml
