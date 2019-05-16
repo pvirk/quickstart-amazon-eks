@@ -1,5 +1,6 @@
 #!/bin/bash
 # Install searcher application to Kubernetes Cluster
+sudo su ec2-user -l
 cd ~ && mkdir solumina-searcher && cd solumina-searcher
 cat >solumina-searcher-deployment.yaml <<EOF
 apiVersion: apps/v1

@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Deploys searcher on kubernetes cluster
+Parameters:
+  BastionInstanceId:
+    Description: InstanceId of the Bastion
+    Type: String
+Resources: 
+  association:
+    Type: AWS::SSM::Association
+    Properties:
+      AssociationName: CreateSoluminaApplications
+      Name: AWS-RunShellScript
+      Parameters:
+        commands: ["sudo su ec2-user -l bash -c 'wget -O - https://raw.githubusercontent.com/pvirk/quickstart-amazon-eks/master/scripts/searcher-install-bash.sh | bash'"]
+      Targets:
+      - Key: InstanceIds
+        Values: [!Ref 'BastionInstanceId']        
